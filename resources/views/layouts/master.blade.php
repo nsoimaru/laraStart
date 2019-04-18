@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1 class="m-0 text-dark">Lara Start</h1>
 
           </div><!-- /.col -->
-          @include("layouts/_partials/breadcrumb")
+          {{-- @include("layouts/_partials/breadcrumb") --}}
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -44,6 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row">
           {{-- content goes here!!!! --}}
+          <router-view></router-view>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->

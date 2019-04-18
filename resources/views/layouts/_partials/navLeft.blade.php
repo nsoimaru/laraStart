@@ -23,14 +23,14 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-         <li class="nav-item">
-           <a href="#" class="nav-link">
+         <li class="nav-item router-link-active">
+           <router-link to="/dashboard" class="nav-link">
              <i class="nav-icon fas fa-tachometer-alt"></i>
              <p>
                Dashboard
                {{-- <span class="right badge badge-danger">New</span> --}}
              </p>
-           </a>
+           </router-link>
          </li>
 
         <li class="nav-item has-treeview">
@@ -45,26 +45,36 @@
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="fas fa-circle-notch"></i>
-                <p>Active Page</p>
+                <p>Page1</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="fas fa-circle-notch"></i>
-                <p>Inactive Page</p>
+                <p>Page2</p>
               </a>
             </li>
           </ul>
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <router-link to="/profile" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
             <p>
-              User
+              Profile
               {{-- <span class="right badge badge-danger">New</span> --}}
             </p>
-          </a>
+          </router-link>
+        </li>
+
+        <li class="nav-item">
+          <router-link to="#" class="nav-link">
+            <i class="fas fa-power-off"></i>
+            <p>
+              Logout
+              {{-- <span class="right badge badge-danger">New</span> --}}
+            </p>
+          </router-link>
         </li>
 
       </ul>
