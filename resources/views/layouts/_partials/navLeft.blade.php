@@ -25,7 +25,7 @@
              with font-awesome or any other icon font library -->
          <li class="nav-item router-link-active">
            <router-link to="/dashboard" class="nav-link">
-             <i class="nav-icon fas fa-tachometer-alt"></i>
+             <i class="nav-icon fas fa-tachometer-alt teal"></i>
              <p>
                Dashboard
                {{-- <span class="right badge badge-danger">New</span> --}}
@@ -35,7 +35,7 @@
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="fas fa-cog"></i>
+            <i class="fas fa-cog orange"></i>
             <p>
               Management
               <i class="right fa fa-angle-left"></i>
@@ -59,7 +59,7 @@
 
         <li class="nav-item">
           <router-link to="/profile" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
+            <i class="nav-icon fas fa-user teal"></i>
             <p>
               Profile
               {{-- <span class="right badge badge-danger">New</span> --}}
@@ -69,7 +69,7 @@
 
         <li class="nav-item">
           <router-link to="#" class="nav-link">
-            <i class="fas fa-power-off"></i>
+            <i class="fas fa-power-off red"></i>
             <p>
               Logout
               {{-- <span class="right badge badge-danger">New</span> --}}
