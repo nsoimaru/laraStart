@@ -21,5 +21,7 @@ Enjoy
 Resources:
 <p>
 https://www.youtube.com/channel/UCQI-Ym2rLZx52vEoqlPQMdg
+</p>
+<p>
 https://www.youtube.com/channel/UCnj1BK9TU32-bOlZ9415fuw
 </p>
