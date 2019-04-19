@@ -1,6 +1,6 @@
 <h1>Starter template</h1>
 
-Based on Laravel 5.8 Framework and Admin LTE 3
+<h3>Based on Laravel 5.8 Framework and Admin LTE 3</h3>
 
 Version 1.0.0.0 16.04.2019
 Feature:
@@ -19,5 +19,7 @@ Installations:
 Enjoy
 
 Resources:
+<p>
 https://www.youtube.com/channel/UCQI-Ym2rLZx52vEoqlPQMdg
 https://www.youtube.com/channel/UCnj1BK9TU32-bOlZ9415fuw
+</p>

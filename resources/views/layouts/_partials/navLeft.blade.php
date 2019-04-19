@@ -59,7 +59,7 @@
 
         <li class="nav-item">
           <router-link to="/profile" class="nav-link">
-            <i class="nav-icon fas fa-user teal"></i>
+            <i class="nav-icon fas fa-user blue"></i>
             <p>
               Profile
               {{-- <span class="right badge badge-danger">New</span> --}}
@@ -68,13 +68,18 @@
         </li>
 
         <li class="nav-item">
-          <router-link to="#" class="nav-link">
-            <i class="fas fa-power-off red"></i>
-            <p>
-              Logout
-              {{-- <span class="right badge badge-danger">New</span> --}}
-            </p>
-          </router-link>
+          <a class="nav-link" href="{{ route('logout') }}"
+             onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+              <i class="fas fa-power-off red"></i>
+              <p>
+                  {{ __('Logout') }}
+              </p>
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
         </li>
 
       </ul>
