@@ -16,6 +16,11 @@ window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
+// sweetalert2
+import Swal from 'sweetalert2'
+window.Swal = Swal;
+// const Swal = require('sweetalert2')
+
 // Vue progress bar
 import VueProgressBar from 'vue-progressbar'
 
@@ -51,7 +56,9 @@ const router = new VueRouter({
   mode: 'history',
   routes // short for `routes: routes
 })
+// vue router code end
 
+// vue global filter
 Vue.filter('upTxt', function(text){
   return text.charAt(0).toUpperCase() + text.slice(1)
 });
@@ -59,7 +66,10 @@ Vue.filter('upTxt', function(text){
 Vue.filter('myDate', function(created){
   return moment(created).format('MMMM Do YYYY');
 });
-// vue router code end
+
+
+// Global lisener
+window.Fire = new Vue();
 
 /**
  * The following block of code may be used to automatically register your

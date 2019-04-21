@@ -10,7 +10,8 @@ Version 1.0.0.0 16.04.2019
     <li>Laravel 5.8</li>
     <li>Bootstrap 4.3.1/li>
     <li>Font Awesome</li>
-    <li>vue-progressbar</li>
+    <li>Sweetalert2</li>
+    <li>Vue-progressbar</li>
     <li>VueRouter</li>
     <li>vform</li>
     <li>momentjs</li>

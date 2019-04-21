@@ -57,14 +57,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      ***** APP
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://nartex.ro">nartex</a>.</strong> All rights reserved.
-  </footer>
+  @include("layouts/_partials/footer")
+
 </div>
 <!-- ./wrapper -->
 <script src="/js/app.js"></script>

@@ -144,11 +144,23 @@
       createUser() {
         this.$Progress.start();
         this.form.post('api/user');
+        Fire.$emit('LoadData');
+        $('#addNew').modal('hide')
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.$Progress.finish();
       }
     },
     created() {
         this.loadUsers();
+        Fire.$on('LoadData',() => {
+          this.loadUsers();
+        });
     }
   }
 </script>
