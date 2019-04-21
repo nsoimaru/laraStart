@@ -34,7 +34,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row">
           {{-- content goes here!!!! --}}
-          <router-view></router-view>
+        <!-- router view -->
+        <router-view></router-view>
+        <!-- set progressbar -->
+        <vue-progress-bar></vue-progress-bar>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
