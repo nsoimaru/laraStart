@@ -11,6 +11,7 @@ Version 1.0.0.0 16.04.2019
     <li>Bootstrap 4.3.1/li>
     <li>Font Awesome</li>
     <li>VueRouter</li>
+    <li>vform</li>
   </ol>
 </p>
 
@@ -18,8 +19,8 @@ Version 1.0.0.0 16.04.2019
 <p>
   <ol>
     <li>composer install</li>
-    <li>npm install/li>
-    <li>copy .env.example to .env and change DB credentials to yours credentialse</li>
+    <li>npm install</li>
+    <li>copy .env.example to .env and change DB credentials to yours credentials</li>
     <li>php artisan make:auth</li>
     <li>php artisan:migrate</li>
     <li>php key:generate</li>

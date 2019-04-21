@@ -35,24 +35,18 @@
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="fas fa-cog orange"></i>
+            <i class="fas fa-cog orange nav-icon"></i>
             <p>
               Management
-              <i class="right fa fa-angle-left"></i>
+              <i class="right fa fa-angle-left nav-icon"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-circle-notch"></i>
-                <p>Page1</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-circle-notch"></i>
-                <p>Page2</p>
-              </a>
+              <router-link to="/users" class="nav-link">
+                <i class="fas fa-users nav-icon green"></i>
+                <p>Users</p>
+              </router-link>
             </li>
           </ul>
         </li>
@@ -71,7 +65,7 @@
           <a class="nav-link" href="{{ route('logout') }}"
              onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-              <i class="fas fa-power-off red"></i>
+              <i class="fas fa-power-off red nav-icon"></i>
               <p>
                   {{ __('Logout') }}
               </p>
