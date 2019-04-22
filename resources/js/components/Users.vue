@@ -25,7 +25,7 @@
                   <th>Registred At</th>
                   <th>Modify</th>
                 </tr>
-                <tr v-for="user in users" :key="user.id">
+                <tr v-for="user in users.data" :key="user.id">
                   <td>{{user.id}}</td>
                   <td>{{user.name}}</td>
                   <td>{{user.email}}</td>
@@ -36,7 +36,7 @@
                       <i class="fas fa-user-edit green"></i>
                     </a>
                       <i class="fas fa-slash"></i>
-                    <a href="#">
+                     <a href="#" @click="deleteUser(user.id)">
                       <i class="fas fa-user-slash red"></i>
                     </a>
                   </td>
@@ -127,6 +127,7 @@
       return {
         users : {},
         form : new Form({
+          id:'',
           name : '',
           email : '',
           password : '',
@@ -138,22 +139,61 @@
     },
 
     methods: {
+      deleteUser(id){
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+
+            // send request to the server
+          if (result.value) {
+            this.form.delete('api/user/'+id).then(()=>{
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+              Fire.$emit('LoadData');
+            }).catch(()=>{
+              Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                // footer: '<a href>Why do I have this issue?</a>'
+              })
+            })
+          }
+        })
+      },
       loadUsers(){
-        axios.get("api/user").then(({ data }) => (this.users = data.data));
+        axios.get("api/user").then(({ data }) => (this.users = data));
       },
       createUser() {
         this.$Progress.start();
-        this.form.post('api/user');
-        Fire.$emit('LoadData');
-        $('#addNew').modal('hide')
-        Swal.fire({
-          position: 'top-end',
-          type: 'success',
-          title: 'Your work has been saved',
-          showConfirmButton: false,
-          timer: 1500
+
+        this.form.post('api/user')
+
+        .then(()=>{
+          Fire.$emit('LoadData');
+          $('#addNew').modal('hide')
+          Swal.fire({
+            position: 'top-end',
+            type: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.$Progress.finish();
         })
-        this.$Progress.finish();
+
+        .catch(()=>{
+
+        })
       }
     },
     created() {
