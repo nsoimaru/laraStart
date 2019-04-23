@@ -8,7 +8,7 @@
 
               <div class="card-tools">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNew">
+                <button type="button" class="btn btn-success" @click="newModal">
                   <i class="fas fa-user-plus fa-fw"></i>
                 </button>
               </div>
@@ -32,7 +32,7 @@
                   <td>{{user.type | upTxt}}</td>
                   <td>{{user.created_at | myDate}}</td>
                   <td>
-                    <a href="#">
+                    <a href="#" @click="editModal(user)">
                       <i class="fas fa-user-edit green"></i>
                     </a>
                       <i class="fas fa-slash"></i>
@@ -55,14 +55,15 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="addNewLabel">Add New</h5>
+              <h5 v-show="!editmode" class="modal-title" id="addNewLabel">Add New</h5>
+              <h5 v-show="editmode" class="modal-title" id="addNewLabel">Edit User Credentials</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
 
             <!-- Form start -->
-              <form @submit.prevent='createUser'>
+              <form @submit.prevent="editmode ? updateUser() : createUser()">
 
               <div class="modal-body">
                 <div class="form-group">
@@ -108,7 +109,8 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success">Create</button>
+              <button v-show="editmode" type="submit" class="btn btn-success">Update</button>
+              <button v-show="!editmode" type="submit" class="btn btn-primary">Create</button>
             </div>
           </form>
           <!-- Form end -->
@@ -125,6 +127,7 @@
   export default {
     data(){
       return {
+        editmode: false,
         users : {},
         form : new Form({
           id:'',
@@ -139,6 +142,40 @@
     },
 
     methods: {
+      updateUser(){
+        this.$Progress.start();
+        this.form.put('api/user/'+this.form.id)
+        .then(()=>{
+          Fire.$emit('LoadData');
+          $('#addNew').modal('hide')
+          Swal.fire({
+            position: 'top-end',
+            type: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          //success
+          this.$Progress.finish();
+        })
+        .catch(()=>{
+          this.$Progress.fail();
+        })
+        //console.log('editing your data~~~!!!')
+      },
+      editModal(user){
+        this.editmode = true;
+        this.form.clear();
+        this.form.reset();
+        $('#addNew').modal('show')
+        this.form.fill(user);
+      },
+      newModal(){
+        this.editmode = false;
+        this.form.clear();
+        this.form.reset();
+        $('#addNew').modal('show')
+      },
       deleteUser(id){
         Swal.fire({
           title: 'Are you sure?',
