@@ -8,7 +8,7 @@ Version 1.0.0.0 16.04.2019
 <p>
   <ol>
     <li>Laravel 5.8</li>
-    <li>Bootstrap 4.3.1/li>
+    <li>Bootstrap 4.3.1/<li>
     <li>Font Awesome</li>
     <li>Sweetalert2</li>
     <li>Vue-progressbar</li>
