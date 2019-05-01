@@ -11,6 +11,9 @@ Version 1.0.0.0 16.04.2019
     <li>Bootstrap 4.3.1</li>
     <li>Font Awesome</li>
     <li>VueRouter</li>
+    <li>Vue-progressbar</li>
+    <li>Vform</li>
+    <li>Momentjs</li>
   </ol>
 </p>
 
