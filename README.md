@@ -14,6 +14,8 @@ Version 1.0.0.0 16.04.2019
     <li>Vue-progressbar</li>
     <li>Vform</li>
     <li>Momentjs</li>
+    <li>Base 64</li>
+    <li>Intervention Image</li>
   </ol>
 </p>
 
