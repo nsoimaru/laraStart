@@ -18,6 +18,7 @@ Vue.prototype.$gate = new Gate(window.user);
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 // sweetalert2
 import Swal from 'sweetalert2'
@@ -54,7 +55,8 @@ const routes = [
   { path: '/home', component: require('./components/Home.vue').default },
   { path: '/developer', component: require('./components/Developer.vue').default },
   { path: '/users', component: require('./components/Users.vue').default },
-  { path: '/profile', component: require('./components/Profile.vue').default }
+  { path: '/profile', component: require('./components/Profile.vue').default },
+  { path: '*', component: require('./components/NotFound.vue').default }
 ]
 
 const router = new VueRouter({
@@ -107,6 +109,16 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  Vue.component(
      'passport-personal-access-tokens',
      require('./components/passport/PersonalAccessTokens.vue').default
+ );
+
+ Vue.component(
+     'not-found',
+     require('./components/NotFound.vue').default
+ );
+
+ Vue.component(
+     'under-construction',
+     require('./components/UnderConstruction.vue').default
  );
 
 

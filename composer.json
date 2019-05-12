@@ -1,6 +1,6 @@
 {
     "name": "larastart/nartex",
-    "type": "starterPproject",
+    "type": "StarterProject",
     "description": "Starter project with Laravel and Admin LTE 3",
     "keywords": [
         "framework",

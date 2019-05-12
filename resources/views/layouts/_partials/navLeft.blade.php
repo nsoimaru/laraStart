@@ -20,7 +20,7 @@
       </div>
       <div class="info">
         <a href="/profile" class="d-block">{{ Auth::user()->name }}</a>
-        <a href="/profile" class="d-block">{{ Auth::user()->type }}</a>
+        <p><a href="/profile" class="d-block">{{ Auth::user()->type }}</a></p>
       </div>
     </div>
 

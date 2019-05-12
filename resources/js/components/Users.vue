@@ -46,12 +46,17 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
+                <div class="card-footer">
+                  <pagination :data="users" @pagination-change-page="getResults"></pagination>
+                </div>
             </div>
             <!-- /.card -->
         </div>
     </div>
 
-
+    <div class="" v-if="!$gate.isAdminOrAuthor()">
+      <not-found></not-found>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -135,6 +140,12 @@ export default {
     },
 
     methods: {
+      getResults(page = 1){
+        axios.get('api/user?page=' + page)
+				.then(response => {
+					this.users = response.data;
+				});
+      },
         updateUser() {
             this.$Progress.start();
             this.form.put('api/user/' + this.form.id)
