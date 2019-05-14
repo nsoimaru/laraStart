@@ -8,19 +8,26 @@ Version 1.0.0.0 16.04.2019
 <p>
   <ol>
     <li>Laravel 5.8</li>
-    <li>Bootstrap 4.3.1/li>
+    <li>Bootstrap 4.3.1</li>
     <li>Font Awesome</li>
     <li>VueRouter</li>
+    <li>Vue-progressbar</li>
+    <li>Vform</li>
+    <li>Momentjs</li>
+    <li>Base 64</li>
+    <li>Intervention Image</li>
   </ol>
 </p>
 
 <h4>Installation:</h4>
 <p>
   <ol>
+    <li>clone this repo inti your project folder</li>
     <li>composer install</li>
     <li>npm install/li>
     <li>copy .env.example to .env and change DB credentials to yours credentialse</li>
     <li>php artisan make:auth</li>
+    <li>php artisan passport:install</li>
     <li>php artisan:migrate</li>
     <li>php key:generate</li>
   </ol>

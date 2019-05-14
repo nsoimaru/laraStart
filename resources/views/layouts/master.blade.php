@@ -26,17 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Lara Start</h1>
-
-          </div><!-- /.col -->
-          {{-- @include("layouts/_partials/breadcrumb") --}}
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+    @include("layouts/_partials/contentHeader")
     <!-- /.content-header -->
 
     <!-- Main content -->
@@ -44,7 +34,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row">
           {{-- content goes here!!!! --}}
-          <router-view></router-view>
+        <!-- router view -->
+        <router-view></router-view>
+        <!-- set progressbar -->
+        <vue-progress-bar></vue-progress-bar>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -64,16 +57,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      ***** APP
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://nartex.ro">nartex</a>.</strong> All rights reserved.
-  </footer>
+  @include("layouts/_partials/footer")
+
 </div>
 <!-- ./wrapper -->
+
+@auth
+<script>
+    window.user = @json(auth()->user())
+</script>
+@endauth
+
 <script src="/js/app.js"></script>
 </body>
 </html>

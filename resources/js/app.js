@@ -9,6 +9,42 @@ require('./bootstrap');
 require('admin-lte');
 
 window.Vue = require('vue');
+import moment from 'moment';
+import { Form, HasError, AlertError } from 'vform';
+
+import Gate from "./Gate";
+Vue.prototype.$gate = new Gate(window.user);
+
+window.Form = Form;
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+Vue.component('pagination', require('laravel-vue-pagination'));
+
+// sweetalert2
+import Swal from 'sweetalert2'
+window.Swal = Swal;
+// const Swal = require('sweetalert2')
+
+// Vue progress bar
+import VueProgressBar from 'vue-progressbar'
+
+const options = {
+  color: '#bffaf3',
+  failedColor: '#874b4b',
+  thickness: '3px',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'top',
+  inverse: false
+}
+
+Vue.use(VueProgressBar, options)
+
+// Vue progress bar end
 
 // vue router code start
 import VueRouter from 'vue-router'
@@ -16,14 +52,31 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/dashboard', component: require('./components/Dashboard.vue').default },
-  { path: '/profile', component: require('./components/Profile.vue').default }
+  { path: '/home', component: require('./components/Home.vue').default },
+  { path: '/developer', component: require('./components/Developer.vue').default },
+  { path: '/users', component: require('./components/Users.vue').default },
+  { path: '/profile', component: require('./components/Profile.vue').default },
+  { path: '*', component: require('./components/NotFound.vue').default }
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  routes // short for `routes: routes`
+  routes // short for `routes: routes
 })
 // vue router code end
+
+// vue global filter
+Vue.filter('upTxt', function(text){
+  return text.charAt(0).toUpperCase() + text.slice(1)
+});
+
+Vue.filter('myDate', function(created){
+  return moment(created).format('MMMM Do YYYY');
+});
+
+
+// Global lisener
+window.Fire = new Vue();
 
 /**
  * The following block of code may be used to automatically register your
@@ -43,8 +96,42 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+ Vue.component(
+     'passport-clients',
+     require('./components/passport/Clients.vue').default
+ );
+
+ Vue.component(
+     'passport-authorized-clients',
+     require('./components/passport/AuthorizedClients.vue').default
+ );
+
+ Vue.component(
+     'passport-personal-access-tokens',
+     require('./components/passport/PersonalAccessTokens.vue').default
+ );
+
+ Vue.component(
+     'not-found',
+     require('./components/NotFound.vue').default
+ );
+
+ Vue.component(
+     'under-construction',
+     require('./components/UnderConstruction.vue').default
+ );
+
+
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    data:{
+      search: ''
+    },
+    methods:{
+      searchit: _.debounce(()=>{
+        Fire.$emit('searching')
+      },1000)
+    }
 });

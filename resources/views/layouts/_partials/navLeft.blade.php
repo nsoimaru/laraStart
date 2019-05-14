@@ -11,10 +11,16 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="./img/man.png" class="img-circle elevation-2" alt="User Image">
+        @if ('{{ Auth::user()->photo }}' != 'man.png')
+          <img src="./img/profile/{{ Auth::user()->photo }}" class="img-circle elevation-2" alt="User Image">
+        @else
+          <img src="./img/profile.png" class="img-circle elevation-2" alt="User Image">
+        @endif
+        {{-- <img src="./img/man.png" class="img-circle elevation-2" alt="User Image"> --}}
       </div>
       <div class="info">
-        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+        <a href="/profile" class="d-block">{{ Auth::user()->name }}</a>
+        <p><a href="/profile" class="d-block">{{ Auth::user()->type }}</a></p>
       </div>
     </div>
 
@@ -32,31 +38,36 @@
              </p>
            </router-link>
          </li>
+         @can('isAdmin')
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="fas fa-cog orange"></i>
+            <i class="fas fa-cog orange nav-icon"></i>
             <p>
               Management
-              <i class="right fa fa-angle-left"></i>
+              <i class="right fa fa-angle-left nav-icon"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-circle-notch"></i>
-                <p>Page1</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-circle-notch"></i>
-                <p>Page2</p>
-              </a>
+              <router-link to="/users" class="nav-link">
+                <i class="fas fa-users nav-icon green"></i>
+                <p>Users</p>
+              </router-link>
             </li>
           </ul>
         </li>
 
+        <li class="nav-item">
+          <router-link to="/developer" class="nav-link">
+            <i class="nav-icon fas fa-cogs orange"></i>
+            <p>
+              Developer
+              {{-- <span class="right badge badge-danger">New</span> --}}
+            </p>
+          </router-link>
+        </li>
+        @endcan
         <li class="nav-item">
           <router-link to="/profile" class="nav-link">
             <i class="nav-icon fas fa-user blue"></i>
@@ -71,7 +82,7 @@
           <a class="nav-link" href="{{ route('logout') }}"
              onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-              <i class="fas fa-power-off red"></i>
+              <i class="fas fa-power-off red nav-icon"></i>
               <p>
                   {{ __('Logout') }}
               </p>
