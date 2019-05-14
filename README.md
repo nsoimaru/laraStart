@@ -22,10 +22,12 @@ Version 1.0.0.0 16.04.2019
 <h4>Installation:</h4>
 <p>
   <ol>
+    <li>clone this repo inti your project folder</li>
     <li>composer install</li>
     <li>npm install/li>
     <li>copy .env.example to .env and change DB credentials to yours credentialse</li>
     <li>php artisan make:auth</li>
+    <li>php artisan passport:install</li>
     <li>php artisan:migrate</li>
     <li>php key:generate</li>
   </ol>
