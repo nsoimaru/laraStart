@@ -30,6 +30,7 @@ Version 1.0.0.0 16.04.2019
     <li>php artisan passport:install</li>
     <li>php artisan:migrate</li>
     <li>php key:generate</li>
+    <li>change @extends('layouts.app') in resources/views/home.blade.php with @extends('layouts.master')</li>
   </ol>
 </p
 
